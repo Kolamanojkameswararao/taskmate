@@ -22,8 +22,8 @@
 
     <form method="POST" class="row">
       {% csrf_token %}
-    <label class="col-lg-4"></label>
-    <input type="text" class="form-control col-lg-6" name="task" placeholder="New Task?">
+    <label class="col-lg-2"></label>
+    <input type="text" class="form-control col-lg-6 mr-4" name="task" placeholder="New Task?">
   <button type="submit" class="btn btn-primary col-lg-2">Add Task</button>
   </form>
   </br>
@@ -73,5 +73,7 @@
       <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.paginator.num_pages }}">Last</a></li>
       </ul>
     </nav>
+    </br>
+    <center><a href="{% url 'download_tasks' %}"><button type="button" class="btn btn-primary btn-lg md-2">Download Tasks</button></a>
   </div>
 {% endblock content %}

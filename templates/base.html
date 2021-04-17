@@ -26,6 +26,10 @@
   </div>
   {% if user.is_authenticated %}
   <div class="form-inline my-2 my-lg-0">
+    <form class="d-flex">
+        <input class="form-control me-2 mr-2" type="search" placeholder="Search Tasks" name="query" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     <div class="p-2 bg-dark text-white">Logged in as {{ user.username }}</div>
     <a href="{% url 'logout' %}">
     <button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>

@@ -7,6 +7,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 @login_required
 def todolist(request):
+    if 'query' in request.GET:
+        search =request.GET['query']
+        all_tasks = TaskList.objects.filter(task__icontains=search)
+        return render(request,'todolist.html',{'all_tasks':all_tasks})
     if request.method=="POST":
         form =TaskForm(request.POST or None)
         if form.is_valid():
@@ -24,7 +28,7 @@ def todolist(request):
 @login_required
 def delete_task(request,task_id):
     task=TaskList.objects.get(pk=task_id)
-    
+
     if task.manage == request.user:
         task.delete()
     else:
@@ -76,6 +80,6 @@ def contact(request):
 
 def about(request):
     context={
-    'about_text':'Welcome to About page',
+    'about_text':'This application is developed using Django Framework.Thanks for using us',
     }
     return render(request,'about.html',context)
