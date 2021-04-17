@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 def todolist(request):
     if 'query' in request.GET:
         search =request.GET['query']
-        all_tasks = TaskList.objects.filter(task__icontains=search)
+        tasks = TaskList.objects.filter(task__icontains=search)
+        all_tasks=tasks.filter(manage=request.user)
         return render(request,'todolist.html',{'all_tasks':all_tasks})
     if request.method=="POST":
         form =TaskForm(request.POST or None)
