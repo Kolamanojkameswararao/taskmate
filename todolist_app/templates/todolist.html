@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
-
+<!-- <style>
+  /* .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0} */
+  .speech  {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .speech img {float: right; width: 40px }
+</style> -->
 {% block title %}
    <title>Todo List manager - taskmate</title>
 {% endblock title %}
@@ -23,9 +28,10 @@
     <form method="POST" class="row">
       {% csrf_token %}
     <label class="col-lg-2"></label>
-    <input type="text" class="form-control col-lg-6 mr-4" name="task" placeholder="New Task?">
-  <button type="submit" class="btn btn-primary col-lg-2">Add Task</button>
-  </form>
+    <input type="text" id="speechToText" class="form-control col-lg-6" name="task" placeholder="Type or Speak something">
+    <a href="#" class="speech mr-3" style="font-size:24px mt-5"  onclick="record()"> <img src="{% static 'images/mic.jpeg' %}" class="speech" width="33px" height="33px" ></img></a>
+   <button type="submit" style="ml-2" class="btn btn-primary col-lg-2">Add Task</button>
+   </form>
   </br>
     <table class="table table-bordered text-center">
       <thead class="thead-dark">
