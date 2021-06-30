@@ -21,13 +21,7 @@ def send(tomail,name):
     body="<b>Dear "+name+", You have successfully registered on taskmate.Now Login and access your own Taskmate</b>"
     msg.attach(MIMEText(body,'html'))
 
-    # my_file=open(filename,'rb')
-    #
-    # part=MIMEBase('application','octet-stream')
-    # part.set_payload((my_file).read())
-    # encoders.encode_base64(part)
-    # part.add_header('Content-Disposition','attachment; filename= '+ filename)
-    # msg.attach(part)
+
     message=msg.as_string()
 
     server=smtplib.SMTP('smtp.gmail.com',587)
